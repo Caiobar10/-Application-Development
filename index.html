@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--
+  Disciplina: Application Development
+  Professor: Allan Roberto Molto
+  Checkpoint 2 — Site institucional (evolução da CP1)
+  Aluno: Caio Moda Francisco Fortes Barbieri — RM 566747
+  FIAP · Ciência da Computação · 2º ano · 2026
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Verdia Tech: sensores IoT e inteligência artificial para agricultura e pecuária de precisão. Tecnologia que entende o campo.">
+    <title>Verdia Tech | Tecnologia que entende o campo</title>
+
+    <!-- Fonte do Google Fonts (com fallback de fonte do sistema no CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  </head>
+
+  <body>
+    <!-- ===== CABEÇALHO ===== -->
+    <header class="cabecalho">
+      <div class="container cabecalho__conteudo">
+        <a class="marca" href="#inicio">
+          <img
+            class="marca__logo"
+            src="img/logo.svg"
+            alt="Logo da Verdia Tech"
+            width="44"
+            height="44">
+          <span class="marca__nome">Verdia <strong>Tech</strong></span>
+        </a>
+
+        <nav class="menu" aria-label="Navegação principal">
+          <ul class="menu__lista">
+            <li><a class="menu__link" href="#inicio">Início</a></li>
+            <li><a class="menu__link" href="#empresa">Empresa</a></li>
+            <li><a class="menu__link" href="#solucoes">Soluções</a></li>
+            <li><a class="menu__link" href="#planos">Planos</a></li>
+            <li><a class="menu__link" href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== SEÇÃO: INÍCIO (HERO) ===== -->
+      <section id="inicio" class="secao hero">
+        <div class="container hero__conteudo">
+          <div class="hero__texto">
+            <p class="hero__selo">IoT + IA para o agronegócio</p>
+            <h1 class="hero__titulo">Verdia Tech</h1>
+            <p class="hero__slogan">Tecnologia que entende o campo.</p>
+            <p class="hero__descricao">
+              Instalamos sensores IoT de umidade do solo, clima e monitoramento
+              de rebanho e usamos inteligência artificial para transformar os
+              dados em recomendações práticas no celular do produtor. Menos
+              desperdício de água, menos perdas e decisões mais rápidas.
+            </p>
+            <div class="hero__acoes">
+              <a class="btn" href="#contato">Solicite um orçamento</a>
+              <a class="btn btn--secundario" href="#planos">Conheça os planos</a>
+            </div>
+          </div>
+
+          <figure class="hero__figura">
+            <img
+              class="hero__imagem"
+              src="img/hero.svg"
+              alt="Ilustração de uma plantação com sensores IoT enviando dados para um celular com gráficos e recomendações"
+              width="560"
+              height="420">
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===== SEÇÃO: EMPRESA ===== -->
+      <section id="empresa" class="secao secao--alternada">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <p class="secao__sobretitulo">Quem somos</p>
+            <h2 class="secao__titulo">Sobre a Verdia Tech</h2>
+            <p class="secao__intro">
+              Nascemos em São Paulo, em 2024, da união de engenheiros de
+              computação e agrônomos que viam o mesmo problema: o produtor rural
+              tem cada vez mais dados, mas pouco tempo para interpretá-los.
+              Criamos uma plataforma que conecta sensores de campo a modelos de
+              IA e entrega, em linguagem simples, o que fazer hoje na lavoura e
+              no pasto.
+            </p>
+          </header>
+
+          <div class="pilares">
+            <article class="pilar">
+              <h3 class="pilar__titulo">Missão</h3>
+              <p>
+                Levar tecnologia de precisão acessível a produtores de todos os
+                tamanhos, transformando dados do campo em decisões que economizam
+                recursos e aumentam a produtividade.
+              </p>
+            </article>
+
+            <article class="pilar">
+              <h3 class="pilar__titulo">Visão</h3>
+              <p>
+                Ser, até 2030, a principal plataforma de agricultura e pecuária
+                inteligente da América Latina, presente em mais de 10 mil
+                propriedades.
+              </p>
+            </article>
+
+            <article class="pilar">
+              <h3 class="pilar__titulo">Valores</h3>
+              <ul class="pilar__lista">
+                <li>Sustentabilidade em cada recomendação</li>
+                <li>Simplicidade: tecnologia que qualquer um usa</li>
+                <li>Transparência no uso dos dados</li>
+                <li>Parceria próxima com o produtor</li>
+                <li>Inovação com os pés no chão</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SEÇÃO: SOLUÇÕES ===== -->
+      <section id="solucoes" class="secao">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <p class="secao__sobretitulo">O que fazemos</p>
+            <h2 class="secao__titulo">Nossas soluções</h2>
+            <p class="secao__intro">
+              Módulos que funcionam sozinhos ou integrados na mesma plataforma.
+            </p>
+          </header>
+
+          <div class="cards">
+            <article class="card">
+              <img
+                class="card__icone"
+                src="img/icone-solo.svg"
+                alt="Ícone de uma planta brotando do solo com uma gota de água"
+                width="64"
+                height="64">
+              <h3 class="card__titulo">Monitoramento de Solo</h3>
+              <p class="card__descricao">
+                Sensores medem umidade, temperatura e condutividade do solo em
+                tempo real e indicam o momento e a quantidade certa de irrigação.
+              </p>
+              <a class="card__link" href="#planos">Saiba mais</a>
+            </article>
+
+            <article class="card">
+              <img
+                class="card__icone"
+                src="img/icone-rebanho.svg"
+                alt="Ícone de uma cabeça de boi com brinco eletrônico"
+                width="64"
+                height="64">
+              <h3 class="card__titulo">Gestão de Rebanho</h3>
+              <p class="card__descricao">
+                Brincos eletrônicos fazem contagem, localização e acompanhamento
+                da atividade dos animais, com alertas de comportamento anormal.
+              </p>
+              <a class="card__link" href="#planos">Saiba mais</a>
+            </article>
+
+            <article class="card">
+              <img
+                class="card__icone"
+                src="img/icone-clima.svg"
+                alt="Ícone de sol e nuvem com chuva"
+                width="64"
+                height="64">
+              <h3 class="card__titulo">Estação Climática</h3>
+              <p class="card__descricao">
+                Estação própria na fazenda registra chuva, vento e temperatura e
+                cruza com previsões para avisar sobre geadas e janelas de
+                pulverização.
+              </p>
+              <a class="card__link" href="#contato">Saiba mais</a>
+            </article>
+
+            <article class="card">
+              <img
+                class="card__icone"
+                src="img/icone-ia.svg"
+                alt="Ícone de um chip com as letras IA"
+                width="64"
+                height="64">
+              <h3 class="card__titulo">Assistente com IA</h3>
+              <p class="card__descricao">
+                Um assistente no celular analisa todos os dados da propriedade e
+                responde em português simples: o que fazer, onde e quando.
+              </p>
+              <a class="card__link" href="#contato">Saiba mais</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SEÇÃO: PLANOS ===== -->
+      <section id="planos" class="secao secao--alternada">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <p class="secao__sobretitulo">Preços</p>
+            <h2 class="secao__titulo">Planos</h2>
+            <p class="secao__intro">
+              Escolha o plano ideal para o tamanho da sua propriedade.
+            </p>
+          </header>
+
+          <!-- Wrapper com rolagem horizontal em telas pequenas -->
+          <div class="tabela-wrapper">
+            <table class="tabela">
+              <caption class="tabela__legenda">
+                Comparativo de planos da Verdia Tech (valores mensais)
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Plano</th>
+                  <th scope="col">Recursos</th>
+                  <th scope="col">Suporte</th>
+                  <th scope="col">Preço</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="tabela__plano">Basic</th>
+                  <td>
+                    <ul class="tabela__recursos">
+                      <li>Até 3 sensores de solo</li>
+                      <li>Painel web com histórico de 30 dias</li>
+                      <li>Alertas de irrigação por e-mail</li>
+                    </ul>
+                  </td>
+                  <td>E-mail em horário comercial</td>
+                  <td class="tabela__preco">R$ 49<span>/mês</span></td>
+                </tr>
+                <tr class="tabela__destaque">
+                  <th scope="row" class="tabela__plano">
+                    Pro <span class="selo">Mais escolhido</span>
+                  </th>
+                  <td>
+                    <ul class="tabela__recursos">
+                      <li>Até 15 sensores de solo e clima</li>
+                      <li>Estação climática inclusa</li>
+                      <li>Assistente com IA no celular</li>
+                      <li>Histórico de 1 ano e relatórios</li>
+                    </ul>
+                  </td>
+                  <td>Chat e WhatsApp, 7 dias por semana</td>
+                  <td class="tabela__preco">R$ 99<span>/mês</span></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="tabela__plano">Enterprise</th>
+                  <td>
+                    <ul class="tabela__recursos">
+                      <li>Sensores ilimitados e gestão de rebanho</li>
+                      <li>Modelos de IA personalizados</li>
+                      <li>Integração via API com ERPs</li>
+                      <li>Instalação e manutenção em campo</li>
+                    </ul>
+                  </td>
+                  <td>Gerente de conta dedicado 24h</td>
+                  <td class="tabela__preco">Consulte</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SEÇÃO: CONTATO ===== -->
+      <section id="contato" class="secao">
+        <div class="container">
+          <header class="secao__cabecalho">
+            <p class="secao__sobretitulo">Fale com a gente</p>
+            <h2 class="secao__titulo">Contato e orçamento</h2>
+            <p class="secao__intro">
+              Preencha o formulário e um especialista retorna em até 1 dia útil.
+            </p>
+          </header>
+
+          <div class="contato">
+            <!--
+              Formulário sem backend nesta etapa: action="#" mantém o usuário
+              na página. A validação é feita pelos atributos HTML5
+              (required, minlength, maxlength, type).
+            -->
+            <form class="formulario" action="#" method="post">
+              <fieldset class="formulario__grupo">
+                <legend class="formulario__legenda">Seus dados</legend>
+
+                <div class="campo">
+                  <label class="campo__rotulo" for="nome">
+                    Nome <span class="obrigatorio" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="campo__entrada"
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Seu nome completo"
+                    minlength="3"
+                    maxlength="80"
+                    autocomplete="name"
+                    required>
+                </div>
+
+                <div class="campo">
+                  <label class="campo__rotulo" for="email">
+                    E-mail <span class="obrigatorio" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="campo__entrada"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="voce@exemplo.com"
+                    maxlength="100"
+                    autocomplete="email"
+                    required>
+                </div>
+
+                <div class="campo">
+                  <label class="campo__rotulo" for="telefone">
+                    Telefone <span class="obrigatorio" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="campo__entrada"
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="(11) 91234-5678"
+                    minlength="10"
+                    maxlength="15"
+                    autocomplete="tel"
+                    required>
+                </div>
+              </fieldset>
+
+              <fieldset class="formulario__grupo">
+                <legend class="formulario__legenda">Sua solicitação</legend>
+
+                <div class="campo">
+                  <label class="campo__rotulo" for="assunto">
+                    Assunto <span class="obrigatorio" aria-hidden="true">*</span>
+                  </label>
+                  <select
+                    class="campo__entrada"
+                    id="assunto"
+                    name="assunto"
+                    required
+                  >
+                    <option value="" disabled selected>Selecione um serviço</option>
+                    <option value="solo">Monitoramento de Solo</option>
+                    <option value="rebanho">Gestão de Rebanho</option>
+                    <option value="clima">Estação Climática</option>
+                    <option value="ia">Assistente com IA</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+
+                <div class="campo">
+                  <label class="campo__rotulo" for="mensagem">
+                    Mensagem <span class="obrigatorio" aria-hidden="true">*</span>
+                  </label>
+                  <textarea
+                    class="campo__entrada campo__entrada--texto"
+                    id="mensagem"
+                    name="mensagem"
+                    rows="5"
+                    placeholder="Conte sobre sua propriedade: área, cultura ou rebanho e o que deseja monitorar."
+                    minlength="10"
+                    maxlength="500"
+                    required
+                  ></textarea>
+                </div>
+              </fieldset>
+
+              <p class="formulario__aviso">
+                <span class="obrigatorio">*</span> Campos obrigatórios
+              </p>
+
+              <div class="formulario__acoes">
+                <button class="btn" type="submit">Enviar solicitação</button>
+                <button class="btn btn--secundario" type="reset">Limpar</button>
+              </div>
+            </form>
+
+            <aside class="contato__info" aria-label="Informações de contato">
+              <h3 class="contato__titulo">Outros canais</h3>
+              <address class="contato__endereco">
+                <p>
+                  <strong>E-mail:</strong>
+                  <a href="mailto:contato@verdiatech.com.br">contato@verdiatech.com.br</a>
+                </p>
+                <p>
+                  <strong>Telefone:</strong>
+                  <a href="tel:+551140028922">(11)&nbsp;4002&#8209;8922</a>
+                </p>
+                <p>
+                  <strong>Endereço:</strong> Av. Paulista, 1106 — Bela Vista,
+                  São Paulo — SP, 01310-100
+                </p>
+              </address>
+              <p class="contato__horario">
+                Atendimento de segunda a sexta, das 8h às 18h.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="rodape">
+      <div class="container rodape__conteudo">
+        <div class="rodape__bloco">
+          <p class="rodape__marca">Verdia Tech</p>
+          <p>Tecnologia que entende o campo.</p>
+        </div>
+
+        <div class="rodape__bloco">
+          <p class="rodape__titulo">Contato</p>
+          <p>
+            <a class="rodape__link" href="mailto:contato@verdiatech.com.br">contato@verdiatech.com.br</a>
+          </p>
+          <p>
+            <a class="rodape__link" href="tel:+551140028922">(11)&nbsp;4002&#8209;8922</a>
+          </p>
+        </div>
+
+        <nav class="rodape__bloco" aria-label="Links do rodapé">
+          <p class="rodape__titulo">Links</p>
+          <ul class="rodape__lista">
+            <li><a class="rodape__link" href="#inicio">Voltar ao topo</a></li>
+            <li><a class="rodape__link" href="#planos">Ver planos</a></li>
+            <li>
+              <a
+                class="rodape__link"
+                href="https://www.instagram.com/verdiatech"
+                target="_blank"
+                rel="noopener"
+                >Instagram (abre em nova aba)</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="rodape__copyright">
+        © 2026 Verdia Tech — Desenvolvido por Caio Barbieri (RM 566747) —
+        Checkpoint 2, Application Development, FIAP
+      </p>
+    </footer>
+  </body>
+</html>
