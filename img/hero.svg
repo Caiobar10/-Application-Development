@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-labelledby="t d">
+  <title id="t">Campo conectado</title>
+  <desc id="d">Plantação com sensores IoT enviando sinais para um celular que exibe recomendações da inteligência artificial.</desc>
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6f5d0"/>
+      <stop offset="1" stop-color="#f7faf2"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="420" rx="28" fill="url(#ceu)"/>
+  <!-- Sol -->
+  <circle cx="460" cy="80" r="38" fill="#f4d35e"/>
+  <!-- Nuvem -->
+  <g fill="#ffffff">
+    <ellipse cx="140" cy="78" rx="46" ry="18"/>
+    <ellipse cx="172" cy="66" rx="30" ry="20"/>
+    <ellipse cx="116" cy="70" rx="24" ry="16"/>
+  </g>
+  <!-- Colinas -->
+  <path d="M0 250c90-50 180-60 280-30s200 20 280-20v220H0z" fill="#7cbf3a"/>
+  <path d="M0 290c120-40 230-30 330 0s170 10 230-10v140H0z" fill="#2f8a4a"/>
+  <path d="M0 330c140-20 280-10 560 0v90H0z" fill="#0f4d2e"/>
+  <!-- Linhas de plantio -->
+  <g stroke="#a8e03b" stroke-width="3" stroke-linecap="round" opacity=".55">
+    <path d="M30 360l60 50M110 352l50 58M200 348l35 62M300 348l15 62M400 350l-5 60M490 354l-25 56"/>
+  </g>
+  <!-- Sensores -->
+  <g>
+    <rect x="96" y="232" width="6" height="56" fill="#33413a"/>
+    <rect x="84" y="218" width="30" height="20" rx="5" fill="#ffffff" stroke="#33413a" stroke-width="3"/>
+    <circle cx="99" cy="228" r="4" fill="#a8e03b"/>
+    <rect x="266" y="200" width="6" height="56" fill="#33413a"/>
+    <rect x="254" y="186" width="30" height="20" rx="5" fill="#ffffff" stroke="#33413a" stroke-width="3"/>
+    <circle cx="269" cy="196" r="4" fill="#a8e03b"/>
+  </g>
+  <!-- Ondas de sinal -->
+  <g stroke="#0f4d2e" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M118 206a22 22 0 0 0-38 0M128 194a36 36 0 0 0-58 0"/>
+    <path d="M288 174a22 22 0 0 0-38 0M298 162a36 36 0 0 0-58 0"/>
+  </g>
+  <!-- Linhas de dados até o celular -->
+  <g stroke="#2f8a4a" stroke-width="2.5" stroke-dasharray="6 7" fill="none">
+    <path d="M100 180C160 120 300 110 384 150"/>
+    <path d="M270 150c40-20 80-20 114 6"/>
+  </g>
+  <!-- Celular -->
+  <g>
+    <rect x="384" y="130" width="112" height="196" rx="18" fill="#1d2622"/>
+    <rect x="394" y="146" width="92" height="164" rx="10" fill="#ffffff"/>
+    <rect x="404" y="158" width="72" height="10" rx="5" fill="#0f4d2e"/>
+    <rect x="404" y="178" width="50" height="8" rx="4" fill="#cfd8d2"/>
+    <!-- Gráfico de barras -->
+    <rect x="406" y="232" width="12" height="30" rx="3" fill="#a8e03b"/>
+    <rect x="424" y="218" width="12" height="44" rx="3" fill="#7cbf3a"/>
+    <rect x="442" y="206" width="12" height="56" rx="3" fill="#2f8a4a"/>
+    <rect x="460" y="194" width="12" height="68" rx="3" fill="#0f4d2e"/>
+    <rect x="404" y="274" width="72" height="24" rx="8" fill="#e6f5d0"/>
+    <path d="M414 286l6 6 11-12" stroke="#0f4d2e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="438" y="282" width="30" height="8" rx="4" fill="#2f8a4a"/>
+  </g>
+</svg>
