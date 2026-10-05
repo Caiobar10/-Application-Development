@@ -1,0 +1,856 @@
+/*
+  Disciplina: Application Development
+  Professor: Allan Roberto Molto
+  Checkpoint 2 — Site institucional Verdia Tech
+  Aluno: Caio Moda Francisco Fortes Barbieri — RM 566747
+  FIAP · Ciência da Computação · 2º ano · 2026
+
+  Sumário:
+   1. Variáveis
+   2. Reset e base
+   3. Layout geral (container, seções, títulos)
+   4. Botões
+   5. Cabeçalho e navegação
+   6. Seção Início (hero)
+   7. Seção Empresa (missão, visão, valores)
+   8. Seção Soluções (cards)
+   9. Seção Planos (tabela)
+  10. Seção Contato (formulário)
+  11. Rodapé
+  12. Responsividade
+*/
+
+/* ==========================================================
+   1. Variáveis
+   ========================================================== */
+:root {
+  /* Paleta da identidade visual */
+  --cor-primaria: #0f4d2e; /* verde profundo */
+  --cor-primaria-media: #2f8a4a;
+  --cor-destaque: #a8e03b; /* verde-limão */
+  --cor-destaque-suave: #e6f5d0;
+  --cor-fundo: #f7f8f3; /* off-white */
+  --cor-fundo-alternado: #eef2e6;
+  --cor-superficie: #ffffff;
+  --cor-texto: #2b332f; /* cinza-grafite */
+  --cor-texto-suave: #55605a;
+  --cor-borda: #d5ddd3;
+  --cor-erro: #c0392b;
+
+  /* Tipografia */
+  --fonte-base: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --tamanho-base: 1rem;
+
+  /* Espaçamentos (escala) */
+  --espaco-xs: 0.5rem;
+  --espaco-sm: 1rem;
+  --espaco-md: 1.5rem;
+  --espaco-lg: 2.5rem;
+  --espaco-xl: 5rem;
+
+  /* Formas e sombras */
+  --raio: 12px;
+  --raio-pilula: 999px;
+  --sombra: 0 4px 14px rgba(15, 77, 46, 0.08);
+  --sombra-forte: 0 14px 30px rgba(15, 77, 46, 0.16);
+  --transicao: 0.25s ease;
+
+  /* Altura do cabeçalho fixo (usada no scroll-margin-top) */
+  --altura-cabecalho: 76px;
+}
+
+/* ==========================================================
+   2. Reset e base
+   ========================================================== */
+
+/*
+  Box model: com border-box, a largura/altura declarada JÁ INCLUI padding e
+  border. Assim um card com width 100% e padding 24px não "estoura" o
+  container — o cálculo do layout fica previsível.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave entre as âncoras do menu */
+}
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--tamanho-base);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--cor-primaria-media);
+  transition: color var(--transicao);
+}
+
+a:hover {
+  color: var(--cor-primaria);
+}
+
+/* Foco visível para navegação por teclado (acessibilidade) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   3. Layout geral
+   ========================================================== */
+
+/* Box model: largura máxima + margin auto centraliza; padding lateral evita
+   que o conteúdo encoste na borda da tela em celulares */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--espaco-md);
+}
+
+/* Box model: padding vertical dá respiro entre as seções */
+.secao {
+  padding: var(--espaco-xl) 0;
+  /* Compensa o cabeçalho fixo ao navegar pelas âncoras */
+  scroll-margin-top: var(--altura-cabecalho);
+}
+
+.secao--alternada {
+  background-color: var(--cor-fundo-alternado);
+}
+
+.secao__cabecalho {
+  max-width: 720px;
+  margin: 0 auto var(--espaco-lg);
+  text-align: center;
+}
+
+.secao__sobretitulo {
+  margin-bottom: var(--espaco-xs);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-primaria-media);
+}
+
+.secao__titulo {
+  margin-bottom: var(--espaco-sm);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--cor-primaria);
+}
+
+/* Detalhe decorativo: barrinha verde-limão abaixo do título */
+.secao__titulo::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: var(--espaco-sm) auto 0;
+  border-radius: var(--raio-pilula);
+  background-color: var(--cor-destaque);
+}
+
+.secao__intro {
+  color: var(--cor-texto-suave);
+}
+
+/* ==========================================================
+   4. Botões
+   ========================================================== */
+
+/* Box model: padding interno define o tamanho do botão; borda de 2px
+   (mesma cor do fundo) mantém a altura idêntica à variante secundária */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio-pilula);
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicao), color var(--transicao),
+    transform var(--transicao), box-shadow var(--transicao);
+}
+
+.btn:hover {
+  background-color: var(--cor-primaria-media);
+  border-color: var(--cor-primaria-media);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+}
+
+.btn--secundario {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.btn--secundario:hover {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+}
+
+/* ==========================================================
+   5. Cabeçalho e navegação
+   ========================================================== */
+.cabecalho {
+  position: sticky; /* fica preso no topo durante a rolagem */
+  top: 0;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.95);
+  /* Box model: borda inferior separa o cabeçalho do conteúdo */
+  border-bottom: 1px solid var(--cor-borda);
+  box-shadow: var(--sombra);
+}
+
+/* Flexbox: marca à esquerda, menu à direita, centralizados na vertical */
+.cabecalho__conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-sm);
+  min-height: var(--altura-cabecalho);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--cor-primaria);
+}
+
+.marca__nome {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.marca__nome strong {
+  font-weight: 700;
+  color: var(--cor-primaria-media);
+}
+
+/* Flexbox: itens do menu em linha, com espaçamento via gap */
+.menu__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+/* Box model: padding cria uma área de clique confortável */
+.menu__link {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--raio-pilula);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--cor-texto);
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.menu__link:hover {
+  background-color: var(--cor-destaque-suave);
+  color: var(--cor-primaria);
+}
+
+/* ==========================================================
+   6. Seção Início (hero)
+   ========================================================== */
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--cor-fundo) 0%,
+    var(--cor-destaque-suave) 100%
+  );
+}
+
+/* Flexbox: texto e imagem lado a lado (empilham no celular) */
+.hero__conteudo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-lg);
+}
+
+.hero__texto,
+.hero__figura {
+  flex: 1 1 0;
+}
+
+.hero__selo {
+  display: inline-block;
+  margin-bottom: var(--espaco-sm);
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--cor-primaria-media);
+  border-radius: var(--raio-pilula);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  background-color: var(--cor-superficie);
+}
+
+.hero__titulo {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  color: var(--cor-primaria);
+}
+
+.hero__slogan {
+  margin: var(--espaco-xs) 0 var(--espaco-sm);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  color: var(--cor-primaria-media);
+}
+
+.hero__descricao {
+  max-width: 52ch;
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-texto-suave);
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-sm);
+}
+
+.hero__imagem {
+  width: 100%;
+  border-radius: calc(var(--raio) * 2);
+  box-shadow: var(--sombra-forte);
+}
+
+/* ==========================================================
+   7. Seção Empresa (missão, visão, valores)
+   ========================================================== */
+
+/* Grid: três colunas de mesma largura */
+.pilares {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espaco-md);
+}
+
+/* Box model: padding interno + borda superior colorida como destaque */
+.pilar {
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-top: 5px solid var(--cor-primaria-media);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra);
+}
+
+.pilar__titulo {
+  margin-bottom: var(--espaco-xs);
+  font-size: 1.3rem;
+  color: var(--cor-primaria);
+}
+
+.pilar__lista li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Marcador personalizado da lista de valores */
+.pilar__lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--cor-primaria-media);
+}
+
+/* ==========================================================
+   8. Seção Soluções (cards)
+   ========================================================== */
+
+/* Grid responsivo: as colunas se ajustam ao espaço; todas as linhas
+   esticam, então os cards ficam com a mesma altura */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espaco-md);
+}
+
+/* Box model: padding interno do card + borda + margem entre cards via gap.
+   Flexbox em coluna empurra o link "Saiba mais" para o fim do card. */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra);
+  transition: transform var(--transicao), box-shadow var(--transicao),
+    border-color var(--transicao);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cor-destaque);
+  box-shadow: var(--sombra-forte);
+}
+
+.card__icone {
+  margin-bottom: var(--espaco-sm);
+}
+
+.card__titulo {
+  margin-bottom: var(--espaco-xs);
+  font-size: 1.2rem;
+  color: var(--cor-primaria);
+}
+
+.card__descricao {
+  flex-grow: 1; /* ocupa o espaço livre e alinha os links na base */
+  margin-bottom: var(--espaco-sm);
+  color: var(--cor-texto-suave);
+}
+
+.card__link {
+  align-self: flex-start;
+  font-weight: 600;
+  text-decoration: none;
+  /* Box model: borda inferior funciona como sublinhado animado */
+  border-bottom: 2px solid var(--cor-destaque);
+  padding-bottom: 2px;
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.card__link::after {
+  content: " →";
+}
+
+.card__link:hover {
+  border-color: var(--cor-primaria);
+}
+
+/* ==========================================================
+   9. Seção Planos (tabela)
+   ========================================================== */
+
+/* Em telas pequenas, a tabela rola na horizontal dentro do wrapper */
+.tabela-wrapper {
+  overflow-x: auto;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.tabela {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse; /* uma única borda entre as células */
+  background-color: var(--cor-superficie);
+}
+
+.tabela__legenda {
+  padding: var(--espaco-sm);
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  background-color: var(--cor-superficie);
+}
+
+/* Box model: padding das células + borda inferior separando as linhas */
+.tabela th,
+.tabela td {
+  padding: var(--espaco-sm) var(--espaco-md);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabela thead th {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Linhas zebradas */
+.tabela tbody tr:nth-child(even) {
+  background-color: var(--cor-fundo);
+}
+
+.tabela tbody tr {
+  transition: background-color var(--transicao);
+}
+
+.tabela tbody tr:hover {
+  background-color: var(--cor-destaque-suave);
+}
+
+.tabela__plano {
+  font-size: 1.1rem;
+  color: var(--cor-primaria);
+  white-space: nowrap;
+}
+
+.tabela__recursos li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.tabela__recursos li::before {
+  content: "•";
+  position: absolute;
+  left: 0.2rem;
+  color: var(--cor-primaria-media);
+}
+
+.tabela__preco {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  white-space: nowrap;
+}
+
+.tabela__preco span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+}
+
+/* Destaque do plano Pro: faixa verde-limão à esquerda */
+.tabela .tabela__destaque {
+  background-color: var(--cor-destaque-suave);
+}
+
+.tabela__destaque th {
+  border-left: 5px solid var(--cor-destaque);
+}
+
+.selo {
+  display: inline-block;
+  margin-top: 0.3rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--raio-pilula);
+  background-color: var(--cor-destaque);
+  color: var(--cor-primaria);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   10. Seção Contato (formulário)
+   ========================================================== */
+
+/* Grid: formulário (mais largo) + bloco de informações */
+.contato {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--espaco-lg);
+  align-items: start;
+}
+
+/* Box model: padding interno, borda e sombra formam o "cartão" do form */
+.formulario {
+  padding: var(--espaco-lg);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra);
+}
+
+.formulario__grupo {
+  margin-bottom: var(--espaco-md);
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.formulario__legenda {
+  padding: 0 var(--espaco-xs);
+  font-weight: 600;
+  color: var(--cor-primaria);
+}
+
+.campo {
+  margin-bottom: var(--espaco-sm);
+}
+
+.campo:last-child {
+  margin-bottom: 0;
+}
+
+.campo__rotulo {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+
+.obrigatorio {
+  color: var(--cor-erro);
+}
+
+/* Box model: width 100% + padding + borda; com border-box o campo nunca
+   ultrapassa a largura do formulário */
+.campo__entrada {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color var(--transicao), box-shadow var(--transicao),
+    background-color var(--transicao);
+}
+
+.campo__entrada--texto {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.campo__entrada::placeholder {
+  color: #8a948e;
+}
+
+.campo__entrada:focus {
+  outline: none;
+  border-color: var(--cor-primaria-media);
+  background-color: var(--cor-superficie);
+  box-shadow: 0 0 0 4px rgba(168, 224, 59, 0.45);
+}
+
+/* Validação visual só depois que o usuário digitou algo */
+input.campo__entrada:not(:placeholder-shown):valid,
+textarea.campo__entrada:not(:placeholder-shown):valid {
+  border-color: var(--cor-primaria-media);
+}
+
+input.campo__entrada:not(:placeholder-shown):invalid,
+textarea.campo__entrada:not(:placeholder-shown):invalid {
+  border-color: var(--cor-erro);
+}
+
+/* O select não tem placeholder: fica verde quando uma opção válida é escolhida */
+select.campo__entrada:valid {
+  border-color: var(--cor-primaria-media);
+}
+
+.formulario__aviso {
+  margin-bottom: var(--espaco-sm);
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.formulario__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-sm);
+}
+
+/* Bloco de informações de contato */
+.contato__info {
+  padding: var(--espaco-lg) var(--espaco-md);
+  border-radius: var(--raio);
+  background-color: var(--cor-primaria);
+  color: #e9f1ec;
+}
+
+.contato__titulo {
+  margin-bottom: var(--espaco-sm);
+  font-size: 1.3rem;
+  color: var(--cor-destaque);
+}
+
+.contato__endereco {
+  font-style: normal;
+}
+
+.contato__endereco p {
+  margin-bottom: var(--espaco-sm);
+}
+
+.contato__info a {
+  color: #ffffff;
+  word-break: break-word;
+}
+
+.contato__info a:hover {
+  color: var(--cor-destaque);
+}
+
+.contato__horario {
+  padding-top: var(--espaco-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   11. Rodapé
+   ========================================================== */
+.rodape {
+  padding-top: var(--espaco-lg);
+  background-color: #0b3420;
+  color: #cfdcd4;
+}
+
+/* Flexbox: blocos lado a lado que quebram linha quando falta espaço */
+.rodape__conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--espaco-lg);
+  padding-bottom: var(--espaco-lg);
+}
+
+.rodape__marca {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rodape__titulo {
+  margin-bottom: var(--espaco-xs);
+  font-weight: 600;
+  color: var(--cor-destaque);
+}
+
+.rodape__lista li {
+  margin-bottom: 0.25rem;
+}
+
+.rodape__link {
+  color: #cfdcd4;
+  text-decoration: none;
+}
+
+.rodape__link:hover {
+  color: var(--cor-destaque);
+  text-decoration: underline;
+}
+
+/* Box model: borda superior separa o copyright; padding dá respiro */
+.rodape__copyright {
+  padding: var(--espaco-sm) var(--espaco-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ==========================================================
+   12. Responsividade
+   ========================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  :root {
+    --espaco-xl: 3.5rem;
+    --altura-cabecalho: 120px;
+  }
+
+  /* Cabeçalho: marca em cima, menu embaixo, centralizados */
+  .cabecalho__conteudo {
+    flex-direction: column;
+    padding: var(--espaco-xs) 0;
+    gap: var(--espaco-xs);
+  }
+
+  .menu__lista {
+    justify-content: center;
+  }
+
+  /* Hero empilhado: texto acima da imagem */
+  .hero__conteudo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__descricao {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__acoes {
+    justify-content: center;
+  }
+
+  .pilares {
+    grid-template-columns: 1fr;
+  }
+
+  .contato {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario {
+    padding: var(--espaco-md);
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  :root {
+    --altura-cabecalho: 150px;
+  }
+
+  .container {
+    padding: 0 var(--espaco-sm);
+  }
+
+  .marca__nome {
+    font-size: 1.15rem;
+  }
+
+  .menu__link {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  /* Cards sempre em uma coluna */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Botões ocupam a largura toda */
+  .hero__acoes .btn,
+  .formulario__acoes .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .formulario,
+  .formulario__grupo {
+    padding: var(--espaco-sm);
+  }
+
+  .tabela th,
+  .tabela td {
+    padding: var(--espaco-xs) var(--espaco-sm);
+  }
+}
